@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'Graphik LC Web';
+    font-display: swap;
+    src: url('../fonts/graphiklcweb_medium.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root {
   --colorBlack: #252424;
   --colorGrey: #9B9B9B;
@@ -337,7 +345,7 @@ h5,
 
 .afisha-left-wrapper {
   width: 50%;
-  background: #0E0D0D;
+  border: 2px solid #ddd;
   color: #fff;
 }
 
@@ -347,8 +355,9 @@ h5,
 }
 
 .afisha-item-top {
-  padding: 100px 40px 0;
+  padding: 60px 40px;
   position: relative;
+  cursor: pointer;
 }
 
 .afisha-title {
@@ -356,7 +365,17 @@ h5,
   font-size: 60px;
   text-transform: uppercase;
   max-width: 480px;
-  margin-bottom: 60px;
+  color: #DDDDDD;
+}
+
+.afisha-item-top.active .afisha-title {
+  color: #0E0D0D;
+}
+
+.afisha-arrow-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .afisha-list {
@@ -382,14 +401,54 @@ h5,
   cursor:pointer;
 }
 
+.afisha-dates {
+  display: flex;
+  gap: 40px;
+  padding: 24px 40px 56px 40px;
+}
+
 .afisha-item-dates {
-  font-weight: 600;
-  font-size: 16px;
-  text-transform: uppercase;
-  color: #9B9B9B;
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.afisha-item-dates-months {
+  display: flex;
+  gap: 40px;
+  padding-left: 24px;
+}
+
+.afisha-item-dates-year {
+  font-family: 'Graphik LC Web', sans-serif;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 34px;
+  letter-spacing: -0.03em;
+  color: rgba(221, 221, 221, 1);
+}
+
+.afisha-item-dates-months {
+  color: #0E0D0D;
+  font-family: 'Graphik LC Web', sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 56px;
+  letter-spacing: -0.03em;
+}
+
+.afisha-item-month-active {
   position: relative;
-  z-index: 2;
+}
+
+.afisha-item-month-active-icon {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+}
+
+.afisha-item-month-active a {
+  color: #FF433A;
 }
 
 .afisha-item-title {
@@ -402,6 +461,212 @@ h5,
   display: inline;
   line-height: 1.2;
 }
+
+
+
+
+
+
+
+.afisha-dates.swiper {
+  padding: 24px 40px 56px 40px;
+  overflow: hidden;
+  position: relative;
+   padding-right: 80px;
+}
+
+.afisha-dates.swiper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 160px;     
+  height: 100%;
+  pointer-events: none; 
+  background: linear-gradient(to left, rgba(255,255,255,1), rgba(255,255,255,0));
+  z-index: 10;
+}
+
+.afisha-arrow-right {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.afisha-arrow-right.disabled {
+  cursor: default;
+  pointer-events: none; 
+}
+
+.afisha-dates.swiper .swiper-wrapper {
+  display: flex;
+  align-items: center;  
+}
+
+.afisha-dates.swiper .swiper-slide {
+  width: auto;
+  display: inline-flex;
+  align-items: flex-start;
+}
+
+.afisha-item-dates-year {
+  font-family: 'Graphik LC Web', sans-serif;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 34px;
+  letter-spacing: -0.03em;
+  color: rgba(221, 221, 221, 1);
+}
+
+.afisha-dates.swiper .swiper-slide a {
+  color: inherit;
+  text-decoration: none;
+  font-family: 'Graphik LC Web', sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 56px;
+}
+
+.afisha-item-month-active a {
+  color: #FF433A;
+}
+
+.afisha-item-month-active-icon {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+}
+
+.afisha-year-block {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  position: relative;
+}
+
+.afisha-year-block .afisha-item-dates-year {
+  margin-bottom: 14px; 
+}
+
+.afisha-dates.swiper .swiper-wrapper {
+  align-items: flex-end; 
+}
+
+
+.afisha-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 540px;
+}
+
+
+.afisha-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+  position: relative;
+  min-height: 560px;
+}
+
+.afisha-card-left-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.afisha-card-right-side {
+  display: flex;
+  align-items: flex-end; 
+  justify-content: flex-end; 
+}
+
+.afisha-card-right-side img {
+  display: block;
+  max-width: 100%; 
+  height: auto;
+}
+
+.afisha-card-left-side-top {
+  padding: 40px;
+}
+
+.afisha-card-right-side {
+  display: flex;
+  align-items: flex-end;
+}
+
+
+.afisha-buy-ticket {
+  color: #fff;
+  font-family: 'Graphik LC Web', sans-serif;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 26px;
+  cursor: pointer;
+  transition: 0.3s;
+  background: #0E0D0D;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px;
+  max-height: 96px;
+  width: 100%;
+  max-width: 864px;
+}
+
+.afisha-card-date {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #0E0D0D;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.afisha-card-title {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 34px;
+  letter-spacing: -0.03em;
+  border-bottom: 1px solid #0E0D0D;
+  position: relative;
+  z-index: 2;
+  display: inline;
+}
+
+.afisha-card-time {
+  font-family: 'Graphik LC Web', sans-serif;
+  margin-top: 24px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: grey;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .afisha-item-type {
   font-weight: 500;
@@ -2038,7 +2303,7 @@ a.nagrady_link {
     font-size: 24px;
 }
 .nagrady_list-two {
-    padding: 70px;
+    padding: 40px 40px 60px 40px;
     border-bottom: 2px solid #ddd;
 }
 .nagrady_list-two .history-year-text {
@@ -3564,7 +3829,9 @@ element.style {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  padding-bottom: 60px;
 }
+
 
 .history-year-text {
   font-weight: 400;
@@ -4928,36 +5195,7 @@ body.not-main .mobile-menu {
     padding-bottom: 10px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*news-history-merch end*/
