@@ -13,8 +13,23 @@ document.addEventListener('DOMContentLoaded', () => {
     freeMode: true,
     grabCursor: false,
     simulateTouch: true,
+    slidesOffsetAfter: 160,
     mousewheel: { forceToAxis: true, releaseOnEdges: true },
     watchOverflow: true,
+    breakpoints: {
+      0: {
+        slidesPerGroup: 3,
+        spaceBetween: 20,
+      },
+      601: {
+        slidesPerGroup: 3,
+        spaceBetween: 32,
+      },
+      1351: {
+        slidesPerGroup: 3,
+        spaceBetween: 40,
+      },
+    },
   });
 
   nextBtn.addEventListener('click', () => {
