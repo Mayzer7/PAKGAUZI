@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const swiper = new Swiper(container, {
     slidesPerView: 'auto',
+    slidesPerGroup: 3,
     spaceBetween: 40,
     freeMode: true,
     grabCursor: false,
