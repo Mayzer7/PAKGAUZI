@@ -769,12 +769,23 @@ h5,
   background: #0e0d0d;
   color: #fff;
   border-top: 2px solid #252424;
+  min-width: 340px;
 }
 
 .footer-address {
-  font-weight: 600;
+  font-family: 'Graphik LC Web', sans-serif;
+  font-weight: 500;
   font-size: 32px;
-  margin-bottom: 20px;
+  line-height: 56px;
+  color: #FFFFFF;
+}
+
+.footer-data p {
+  font-family: 'Graphik LC Web', sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 56px;
+  color: #555555;
 }
 
 .footer-link {
@@ -843,7 +854,7 @@ h5,
 }
 
 .footer-button {
-  margin-top: 40px;
+  margin-top: 48px;
 }
 
 .footer-b-left {
@@ -883,9 +894,13 @@ h5,
 .footer-madeby {
   width: 176px;
   position: absolute;
-  bottom: 30px;
+  top: 30px;
   right: 40px;
+  display: flex;
+  gap: 5px;
 }
+
+.footer-madeby p
 
 .footer-cross-item-image {
   width: 58px;
@@ -3199,10 +3214,6 @@ a.nagrady_link {
 }
 
 .footer-bottom {
-    padding-bottom: 100px;
-}
-
-.footer-bottom {
     display: flex;
     flex-direction: column-reverse;
 }
@@ -3470,9 +3481,6 @@ element.style {
     margin-bottom: 20px;
 }
 
-.footer-bottom {
-    padding-bottom: 50px;
-}
 .sidebar-content-top {
   padding: 28px;
   height: 430px;
@@ -5203,9 +5211,20 @@ body.not-main .mobile-menu {
 
 /* Event page */
 
+.event-page-left-cont {
+  position: relative;
+}
+
+.event-page-back {
+  position: absolute;
+  top: 46px;
+  left: 40px;
+}
+
 .event-page {
   margin: 0;
   padding: 0;
+  min-width: 340px;
 }
 
 .event-page-content {
@@ -5223,20 +5242,28 @@ body.not-main .mobile-menu {
 .event-page-content-right-side {
   margin: 0;
   padding: 0;
+  max-width: 958px;
+  max-height: 761px;
+  width: 100%;
+  height: 100%;
 }
 
-.event-page-back {
-  margin-bottom: 120px;
+.event-page-content-right-side img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+
 }
 
 .event-data {
+  padding-top: 6vh;
   font-weight: 700;
   font-size: 40px;
   line-height: 60px;
   letter-spacing: -0.03em;
   color: #9B9B9B;
   margin: 0;
-  padding: 0;
 }
 
 .event-title {
@@ -5253,7 +5280,7 @@ body.not-main .mobile-menu {
 }
 
 .event-time {
-  margin-top: 80px;
+  padding-bottom: 4vh;
   font-family: 'Graphik LC Web', sans-serif;
   font-weight: 500;
   font-size: 40px;
@@ -5282,6 +5309,7 @@ body.not-main .mobile-menu {
   justify-content: space-between;
   padding: 17px 30px;
   border-radius: 100px;
+  white-space: nowrap;
 }
 
 .event-buy-ticket:hover {
@@ -5298,11 +5326,6 @@ body.not-main .mobile-menu {
   transform: rotate(45deg); 
 }
 
-
-
-
-
-
 .event-gift {
   color: #0E0D0D;
   font-family: 'Graphik LC Web', sans-serif;
@@ -5318,6 +5341,11 @@ body.not-main .mobile-menu {
   padding: 17px 30px;
   border-radius: 100px;
   border: 1px solid #0E0D0D;
+  white-space: nowrap;
+}
+
+.event-gift span {
+  padding-right: 10px;
 }
 
 .event-gift:hover {
@@ -5329,6 +5357,7 @@ body.not-main .mobile-menu {
   display: inline-block;           
   transform-origin: 50% 50%;       
   transition: transform 0.3s ease;  
+
 }
 
 .event-gift:hover svg {
@@ -5338,6 +5367,7 @@ body.not-main .mobile-menu {
 .event-page-desc {
   padding: 40px;
   border-top: 2px solid #DDDDDD;
+  margin-bottom: 14px;
 }
 
 .event-page-desc h2 {
@@ -5357,4 +5387,220 @@ body.not-main .mobile-menu {
   letter-spacing: -0.02em;
   color: #0E0D0D;
 }
+
+
+/* Адаптив Event page */
+
+@media (max-width: 1790px) {
+  .event-title {
+    font-size: 50px;
+  }
+
+  .event-time,
+  .event-data {
+    font-size: 32px;
+  }
+
+  .event-page-desc-text {
+    max-width: 1100px;
+    font-size: 18px;
+  }
+
+  .event-time {
+    padding-bottom: 40px;
+  }
+}
+
+@media (max-width: 1700px) {
+  .event-page-desc-text {
+    max-width: 1200px;
+  }
+
+  .event-data {
+    padding-top: 4vh;
+  }
+}
+
+
+
+@media (max-width: 1600px) {
+  .event-page-back a {
+    font-size: 16px;
+  }
+
+  .page-left-cont .page-back .b-arrow {
+    width: 24px;
+    height: 11px;
+}
+
+  .event-data {
+    padding-top: 70px;
+    font-size: 28px;
+  }
+
+  .event-title {
+    font-size: 44px;
+    line-height: 46px;
+  }
+
+  .event-time {
+    font-size: 28px;
+    padding-bottom: 20px;
+  }
+
+  .event-links {
+    gap: 10px;
+  }
+
+  .event-buy-ticket,
+  .event-gift {
+    font-size: 18px;
+    padding: 9px 30px;
+  }
+
+  .event-page-content-left-side {
+    padding: 26px 30px 32px 32px;
+  }
+
+  .event-page-desc {
+    padding: 32px;
+    margin-bottom: 0px;
+  }
+
+  .event-page-desc-text {
+    max-width: 930px;
+  }
+
+  .event-page-back {
+    top: 26px;
+    left: 26px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .event-title {
+    padding-bottom: 0px;
+  }
+
+  .event-data {
+    padding-top: 50px;
+  }
+}
+
+@media (max-width: 1279px) {
+  .header-logo-box-event,
+  .header-nav-box-event {
+    width: 50%;
+  }
+}
+
+
+@media (max-width: 1170px) {
+  .event-data,
+  .event-time {
+    font-size: 22px;
+  }
+
+  .event-title {
+    font-size: 38px;
+    padding-bottom: 10px;
+  }
+}
+
+@media (max-width: 1150px) {
+  .event-data, .event-time {
+    font-size: 18px;
+  }
+
+  .event-title {
+    font-size: 22px;
+    line-height: 120%;
+    padding-bottom: 0px;
+  }
+
+  .event-data {
+    padding-top: 30px;
+  }
+
+  .event-page-back a {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .event-page-content {
+    margin-top: 60px;
+  }
+
+  .page-left-cont .page-back {
+    margin-bottom: 0px;
+  }
+  
+  .event-time {
+    padding-bottom: 0px;
+  }
+}
+
+@media (max-width: 900px) {
+  .event-page-content-left-side {
+    padding: 16px;
+  }
+
+  .event-page-back {
+    top: 16px;
+    left: 10px;
+  }
+}
+
+@media (max-width: 800px) {
+  .event-page-back {
+    top: 28px;
+    left: 28px;
+  }
+
+  .event-page-content {
+    display: grid;             
+    grid-template-columns: 1fr;  
+    gap: 0;
+  }
+
+  .event-page-content-right-side {
+    margin-top: 70px;
+    order: -1;   
+    max-width: 100%;
+    max-height: none;
+    height: auto;
+  }
+
+  .event-page-content-right-side img {
+    width: 100%;
+    height: auto;    
+    object-fit: cover;
+    display: block;
+  }
+
+  .event-page-content-left-side {
+    padding: 28px;   
+  }
+
+  .event-data {
+    padding: 0px;
+  }
+
+  .event-page-desc {
+    padding: 28px;
+    margin-bottom: 32px;
+  } 
+
+  .event-page-desc-text {
+    font-size: 16px;
+    line-height: 140%;
+  }
+}
+
+
+
+
+
+
 
