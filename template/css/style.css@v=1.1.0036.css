@@ -1561,6 +1561,8 @@ body {
   transition: 0.3s;
 }
 
+
+
 .swiper-pagination {
   position: absolute;
   right: 70px;
@@ -1568,12 +1570,30 @@ body {
   top: 0;
   bottom: 0;
   margin: auto;
-  /* height: 100px; */
   height: 100%;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
+  z-index: 7; 
+}
+
+/* подложка */
+.swiper-pagination::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 12px 8px;    
+  border-radius: 100px;
+  background: rgba(0,0,0,0.9);
+  pointer-events: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  z-index: 1;
+  height: auto;        
+  min-width: 28px;  
+  height: 100px;
 }
 
 .swiper-pagination-bullet {
@@ -1583,6 +1603,8 @@ body {
   margin: 10px 0;
   transition: 0.3s;
   cursor: pointer;
+  position: relative;
+  z-index: 2;
 }
 
 .swiper-pagination-bullet:last-child {
@@ -3064,6 +3086,24 @@ a.nagrady_link {
     height: 10px;
     margin: 6px 0;
 }
+
+.swiper-pagination::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 32.5%;
+  transform: translate(-50%, -50%);
+  padding: 12px 0px;    
+  border-radius: 100px;
+  background: rgba(0,0,0,0.9);
+  pointer-events: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  z-index: 1;
+  height: auto;        
+  min-width: 28px;  
+  height: 60px;
+}
+
 
 .afisha-title {
     font-size: 44px;
