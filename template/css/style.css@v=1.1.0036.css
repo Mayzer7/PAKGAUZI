@@ -230,7 +230,7 @@ h5,
   bottom: 0;
   left: 0;
   color: #FFFFFF;
-  font-family: 'Graphik LC Web', sans-serif;
+  font-family: 'Graphik LCG', sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
@@ -2478,6 +2478,15 @@ header.white .header-burger.active .header-burger__line {
   border-top: 2px solid #DDDDDD;
 }
 
+.nagrady-title {
+  font-weight: 700;
+  font-size: 60px;
+  text-transform: uppercase;
+  max-width: 480px;
+  color: #0E0D0D;
+}
+
+
 .nagrady_list-two,
 .nagrady_list-one{
     width: 50%;
@@ -3505,16 +3514,18 @@ element.style {
         width: 100%;
     }
     .nagrady_lists {
-        flex-direction: column;
+      display: flex;
+      flex-direction: column; 
     }
+
     .nagrady_list-one {
-        max-height: 350px;
+        max-height: 650px;
+         order: -1;
         overflow: hidden;
     }
     .nagrady_list-two {
         padding: 40px;
     }
-    
 }
 
 
@@ -5847,6 +5858,7 @@ body.not-main .mobile-menu {
   flex-direction: column;
   height: 100%;
   border-left: 2px solid #ddd;
+  border-bottom: 2px solid #ddd;
 }
 
 .afisha-page-card-info {
