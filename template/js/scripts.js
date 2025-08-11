@@ -106,3 +106,29 @@ observer.observe(document.body, {
   subtree: true,
   attributes: true 
 });
+
+
+
+// Скрытие баннера "Выставочный пакгауз закрыт для посещения"
+document.addEventListener('DOMContentLoaded', () => {
+  const banner = document.querySelector('.info-banner');
+  if (!banner) return;
+
+  const closeBtn = banner.querySelector('.info-banner-close-btn');
+  if (!closeBtn) return;
+
+  banner.setAttribute('role', 'region');
+  banner.setAttribute('aria-hidden', 'false');
+
+  closeBtn.addEventListener('click', () => {
+    banner.classList.add('info-banner--hide');
+    banner.setAttribute('aria-hidden', 'true');
+
+  });
+
+  banner.addEventListener('transitionend', (e) => {
+    if (e.propertyName === 'transform' && banner.classList.contains('info-banner--hide')) {
+      banner.style.display = 'none';
+    }
+  });
+});
