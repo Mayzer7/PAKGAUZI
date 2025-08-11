@@ -133,7 +133,6 @@ h5,
 
 
 
-
 .screen.screen-main {
   /* background: url(../img/ms-back.jpg) no-repeat center; */
   background-size: cover;
@@ -142,7 +141,6 @@ h5,
   padding-top: 60px;
   overflow: hidden;
 }
-
 
 
 .cross-block {
@@ -3490,10 +3488,6 @@ element.style {
 .footer-b-left {
     padding: 28px;
     display: block;
-}
-
-.footer-copyrights {
-    margin-bottom: 20px;
 }
 
 .sidebar-content-top {
