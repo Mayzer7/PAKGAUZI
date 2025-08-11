@@ -371,7 +371,7 @@ h5,
 .afisha-item-top {
   padding: 60px 40px;
   position: relative;
-  cursor: pointer;
+
 
 } 
 
@@ -482,7 +482,6 @@ h5,
   padding: 24px 40px 56px 40px;
   overflow: hidden;
   position: relative;
-  
   border-bottom: 2px solid #ddd;
 }
 
@@ -5266,10 +5265,9 @@ body.not-main .mobile-menu {
 
 .event-page-content-right-side img {
   width: 100%;
-  height: 100%;
-  object-fit: cover; 
+  height: clamp(320px, 40vw, 760px);
+  object-fit: cover;
   display: block;
-
 }
 
 .event-data {
@@ -5653,6 +5651,25 @@ body.not-main .mobile-menu {
   height: 100%;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .afisha-page-cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -5661,6 +5678,9 @@ body.not-main .mobile-menu {
 }
 
 .afisha-page-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   border-left: 2px solid #ddd;
 }
 
@@ -5714,7 +5734,17 @@ body.not-main .mobile-menu {
 
 .afisha-page-card-img {
   position: relative;
+  flex: 1 1 auto;   
+  display: block;
   overflow: hidden;
+}
+
+.afisha-page-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   
+  object-position: center;
+  display: block;
 }
 
 .afisha-page-card-buy-btn {
@@ -5762,6 +5792,52 @@ body.not-main .mobile-menu {
   font-size: 28px;
   line-height: 26px;
   font-weight: 500;
+}
+
+/* Одиночная карточк */
+
+.single-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+
+.single-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+}
+
+.single-card-img {
+  position: unset;
+}
+
+.single-card-buttons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  max-width: 50%; 
+}
+
+@media (max-width: 1200px) {
+  .single-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .single-card {
+    display: unset;
+  }
+
+  .single-card-img {
+    position: relative;
+  }
+
+  .single-card-buttons {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    max-width: unset;
+  }
 }
 
 .show-more-btn-container {

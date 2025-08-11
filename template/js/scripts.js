@@ -56,3 +56,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
   updateNextBtnState();
 });
+
+
+// Одиночная карточка
+function isVisible(el) {
+  return !!(el && (el.offsetWidth || el.offsetHeight || el.getClientRects().length));
+}
+
+function updateContainer(container) {
+  const cards = Array.from(container.querySelectorAll('.afisha-page-card'));
+  const visibleCards = cards.filter(isVisible);
+  const count = visibleCards.length;
+
+  const isSingle = count === 1;
+
+  container.classList.toggle('single-cards', isSingle);
+
+  cards.forEach(card => {
+    card.classList.toggle('single-card', isSingle);
+    const img = card.querySelector('.afisha-page-card-img');
+    if (img) img.classList.toggle('single-card-img', isSingle);
+    const btns = card.querySelector('.afisha-page-card-buttons');
+    if (btns) btns.classList.toggle('single-card-buttons', isSingle);
+  });
+}
+
+function updateAll() {
+  document.querySelectorAll('.afisha-page-cards').forEach(updateContainer);
+}
+
+let _debounceTimer;
+function scheduleUpdate() {
+  clearTimeout(_debounceTimer);
+  _debounceTimer = setTimeout(updateAll, 60);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', updateAll);
+} else {
+  updateAll();
+}
+
+const observer = new MutationObserver(mutations => {
+  scheduleUpdate();
+});
+
+observer.observe(document.body, {
+  childList: true,
+  subtree: true,
+  attributes: true 
+});
