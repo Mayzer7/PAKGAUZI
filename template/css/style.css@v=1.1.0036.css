@@ -1070,7 +1070,7 @@ h5,
 }
 
 .footer-button {
-  margin-top: 48px;
+  margin-top: 32px;
 }
 
 .footer-b-left {
@@ -1178,11 +1178,11 @@ h5,
 
 .footer-cross-links a img{
   height: 70px;
-  width: auto;          /* важно! */
+  width: auto;         
   display: block;
   border-radius: 9999px;
   transition: opacity .3s ease;
-  object-fit: contain;  /* для растровых картинок/нуже на всякий */
+  object-fit: contain; 
 }
 
 .footer-cross-links a img:hover {
@@ -1205,9 +1205,7 @@ h5,
     width: 140px;
     height: 50px;
   }
-}
 
-@media (max-width: 400px) {
   .footer-cross-links {
     flex-direction: column;
     align-items: flex-start;
