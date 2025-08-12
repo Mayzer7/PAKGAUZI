@@ -5830,7 +5830,7 @@ body.not-main .mobile-menu {
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
   .event-page-back {
     top: 28px;
     left: 28px;
