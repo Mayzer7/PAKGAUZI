@@ -6206,7 +6206,7 @@ body.not-main .mobile-menu {
   }
 
   .afisha-page-card-info {
-    padding: 16px 17px 12px 29px;
+    padding: 23px 18px 25px 32px;
   }
 
   .afisha-page-card-data {
@@ -6276,6 +6276,10 @@ body.not-main .mobile-menu {
     max-height: 79px;
     min-height: 79px;
   }
+
+  .afisha-page-card:not(:only-child) .afisha-page-card-img {
+    max-height: 197px;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -6283,11 +6287,7 @@ body.not-main .mobile-menu {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .afisha-page-card-img {
-    max-height: 100%;
-  }
-
-  .afisha-page-card-img img {
+  .afisha-page-card:not(:only-child) .afisha-page-card-img {
     max-height: 100%;
   }
 }
