@@ -666,6 +666,25 @@ h5,
   z-index: 3;
 }
 
+.afisha-dates.swiper::before {
+  display: none;
+}
+
+.afisha-dates.swiper.show-left-gradient::before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 160px;     
+  height: 100%;
+  pointer-events: none; 
+  background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0));
+  z-index: 3;
+}
+
+
+
 .afisha-arrow-right {
   position: absolute;
   top: 50%;
@@ -681,6 +700,25 @@ h5,
 }
 
 .afisha-arrow-right.disabled {
+  cursor: default;
+  pointer-events: none; 
+}
+
+.afisha-arrow-left {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.afisha-arrow-left.disabled {
   cursor: default;
   pointer-events: none; 
 }
@@ -6318,7 +6356,8 @@ body.not-main .mobile-menu {
     padding: 32px;
   }
 
-  .afisha-arrow-right svg {
+  .afisha-arrow-right svg,
+  .afisha-arrow-left svg {
     width: 24px;
     height: 24px;
   }
@@ -6373,7 +6412,8 @@ body.not-main .mobile-menu {
     max-height: 52px;
   }
 
-  .afisha-arrow-right svg {
+  .afisha-arrow-right svg,
+  .afisha-arrow-left svg {
     width: 20px;
     height: 20px;
   }

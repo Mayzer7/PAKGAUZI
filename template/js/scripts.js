@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!container) return;
 
   const nextBtn = container.querySelector('.afisha-arrow-right');
+  const prevBtn = container.querySelector('.afisha-arrow-left');
   
   const swiper = new Swiper(container, {
     slidesPerView: 'auto',
@@ -17,44 +18,42 @@ document.addEventListener('DOMContentLoaded', () => {
     mousewheel: { forceToAxis: true, releaseOnEdges: true },
     watchOverflow: true,
     breakpoints: {
-      0: {
-        slidesPerGroup: 3,
-        spaceBetween: 20,
-      },
-      601: {
-        slidesPerGroup: 3,
-        spaceBetween: 32,
-      },
-      1351: {
-        slidesPerGroup: 3,
-        spaceBetween: 40,
-      },
+      0: { slidesPerGroup: 3, spaceBetween: 20 },
+      601: { slidesPerGroup: 3, spaceBetween: 32 },
+      1351: { slidesPerGroup: 3, spaceBetween: 40 },
     },
   });
 
-  nextBtn.addEventListener('click', () => {
-    swiper.slideNext();
-  });
+  nextBtn.addEventListener('click', () => swiper.slideNext());
+  prevBtn.addEventListener('click', () => swiper.slidePrev());
 
-  function updateNextBtnState() {
-    if (swiper.isEnd) {
-      nextBtn.classList.add('disabled');
-      const path = nextBtn.querySelector('svg path');
-      if (path) path.setAttribute('fill', '#999999');
-      nextBtn.disabled = true;
-    } else {
-      nextBtn.classList.remove('disabled');
-      const path = nextBtn.querySelector('svg path');
-      if (path) path.setAttribute('fill', '#0E0D0D'); 
-      nextBtn.disabled = false;
-    }
+  function updateButtonsState() {
+  // кнопка вперёд
+  if (swiper.isEnd) {
+    nextBtn.classList.add('disabled');
+    nextBtn.querySelector('svg path')?.setAttribute('fill', '#999999');
+    nextBtn.disabled = true;
+  } else {
+    nextBtn.classList.remove('disabled');
+    nextBtn.querySelector('svg path')?.setAttribute('fill', '#0E0D0D');
+    nextBtn.disabled = false;
   }
 
-  swiper.on('slideChange', updateNextBtnState);
-  swiper.on('reachEnd', updateNextBtnState);
-  swiper.on('fromEdge', updateNextBtnState);
+  // кнопка назад
+  if (swiper.isBeginning) {
+    prevBtn.style.display = 'none';
+    container.classList.remove('show-left-gradient');
+  } else {
+    prevBtn.style.display = 'flex';
+    container.classList.add('show-left-gradient');
+  }
+}
 
-  updateNextBtnState();
+  swiper.on('slideChange', updateButtonsState);
+  swiper.on('reachEnd', updateButtonsState);
+  swiper.on('fromEdge', updateButtonsState);
+
+  updateButtonsState(); 
 });
 
 
