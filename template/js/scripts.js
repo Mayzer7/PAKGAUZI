@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Одиночная карточка
+// Одна и вторая карточка
 function isVisible(el) {
   return !!(el && (el.offsetWidth || el.offsetHeight || el.getClientRects().length));
 }
@@ -68,15 +68,34 @@ function updateContainer(container) {
   const count = visibleCards.length;
 
   const isSingle = count === 1;
+  const isTwo = count === 2;
 
   container.classList.toggle('single-cards', isSingle);
+  container.classList.toggle('two-cards', isTwo);
 
   cards.forEach(card => {
     card.classList.toggle('single-card', isSingle);
+    card.classList.toggle('two-card', isTwo);
+
     const img = card.querySelector('.afisha-page-card-img');
-    if (img) img.classList.toggle('single-card-img', isSingle);
+    if (img) {
+      img.classList.toggle('single-card-img', isSingle);
+      img.classList.toggle('two-card-img', isTwo);
+    }
+
     const btns = card.querySelector('.afisha-page-card-buttons');
-    if (btns) btns.classList.toggle('single-card-buttons', isSingle);
+    if (btns) {
+      btns.classList.toggle('single-card-buttons', isSingle);
+      btns.classList.toggle('two-card-buttons', isTwo);
+    }
+
+    // Если одна карточка - меняется изображение с графикой, оно для одной карточки другое
+    if (isSingle) {
+      const placeholder = card.querySelector('.afisha-page-card-img .img-primary');
+      if (placeholder) {
+        placeholder.src = "template/img/afisha-cards/no-active.png";
+      }
+    }
   });
 }
 
@@ -99,11 +118,10 @@ if (document.readyState === 'loading') {
 const observer = new MutationObserver(mutations => {
   scheduleUpdate();
 });
-
 observer.observe(document.body, {
   childList: true,
   subtree: true,
-  attributes: true 
+  attributes: true
 });
 
 
@@ -129,5 +147,57 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.propertyName === 'transform' && banner.classList.contains('info-banner--hide')) {
       banner.style.display = 'none';
     }
+  });
+});
+
+
+
+
+
+
+
+// Логика перехода по ссылке в карточке: 
+// (Если кликаем на кнопку "Купить билет: то переадрисация на страницу покупки билета, 
+// если на карточку в другую область то на страницу Мероприятия)
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.afisha-page-card').forEach(card => {
+    const eventHref = card.dataset.eventHref;
+    card.addEventListener('click', (e) => {
+      const buyBtn = e.target.closest('.afisha-page-card-buy-btn');
+      if (buyBtn) {
+        e.stopPropagation();
+        e.preventDefault();
+        const buyHref = buyBtn.dataset.buyHref;
+        if (buyHref) {
+          window.location.href = buyHref;
+        }
+        return;
+      }
+
+      const interactive = e.target.closest('a, button, input, select, textarea, [role="button"]');
+      if (interactive && !interactive.classList.contains('afisha-page-card-buy-btn')) {
+        return;
+      }
+
+      if (eventHref) {
+        window.location.href = eventHref;
+      }
+    });
+
+    card.addEventListener('keydown', (e) => {
+      const active = document.activeElement;
+      if (active && active.closest && active.closest('.afisha-page-card-buy-btn')) return;
+
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const buyFocused = document.activeElement && document.activeElement.closest('.afisha-page-card-buy-btn');
+        if (buyFocused) {
+          buyFocused.click();
+        } else if (card.dataset.eventHref) {
+          window.location.href = card.dataset.eventHref;
+        }
+      }
+    });
   });
 });
