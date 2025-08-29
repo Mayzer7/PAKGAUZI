@@ -93,7 +93,7 @@ function updateContainer(container) {
     if (isSingle) {
       const placeholder = card.querySelector('.afisha-page-card-img .img-primary');
       if (placeholder) {
-        placeholder.src = "template/img/afisha-cards/no-active.png";
+        placeholder.src = "../template/img/afisha-cards/no-active.png";
       }
     }
   });
