@@ -28,36 +28,38 @@ document.addEventListener('DOMContentLoaded', () => {
   prevBtn.addEventListener('click', () => swiper.slidePrev());
 
   function updateButtonsState() {
-  // кнопка вперёд
-  if (swiper.isEnd) {
-    nextBtn.classList.add('disabled');
-    nextBtn.querySelector('svg path')?.setAttribute('fill', '#999999');
-    nextBtn.disabled = true;
-  } else {
-    nextBtn.classList.remove('disabled');
-    nextBtn.querySelector('svg path')?.setAttribute('fill', '#0E0D0D');
-    nextBtn.disabled = false;
-  }
+    // кнопка вперёд
+    if (swiper.isEnd) {
+      nextBtn.classList.add('disabled');
+      nextBtn.querySelector('svg path')?.setAttribute('fill', '#999999');
+      nextBtn.disabled = true;
+    } else {
+      nextBtn.classList.remove('disabled');
+      nextBtn.querySelector('svg path')?.setAttribute('fill', '#0E0D0D');
+      nextBtn.disabled = false;
+    }
 
-  // кнопка назад
-  if (swiper.isBeginning) {
-    prevBtn.style.display = 'none';
-    container.classList.remove('show-left-gradient');
-  } else {
-    prevBtn.style.display = 'flex';
-    container.classList.add('show-left-gradient');
+    // кнопка назад
+    if (swiper.isBeginning) {
+      prevBtn.style.display = 'none';
+      // вместо container используем swiper.el
+      swiper.el.classList.remove('show-left-gradient');
+    } else {
+      prevBtn.style.display = 'flex';
+      swiper.el.classList.add('show-left-gradient');
+    }
   }
-}
 
   swiper.on('slideChange', updateButtonsState);
   swiper.on('reachEnd', updateButtonsState);
   swiper.on('fromEdge', updateButtonsState);
 
-  updateButtonsState(); 
+  updateButtonsState();
 });
 
 
 // Одна и вторая карточка
+
 function isVisible(el) {
   return !!(el && (el.offsetWidth || el.offsetHeight || el.getClientRects().length));
 }
@@ -127,6 +129,7 @@ observer.observe(document.body, {
 
 
 // Скрытие баннера "Выставочный пакгауз закрыт для посещения"
+
 document.addEventListener('DOMContentLoaded', () => {
   const banner = document.querySelector('.info-banner');
   if (!banner) return;
